@@ -1,15 +1,15 @@
 # Virtuaaliviivakoodi
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/virtuaaliviivakoodi`. To experiment with that code, run `bin/console` for an interactive prompt.
+Virtuaaliviivakoodi is a library for generating Pankkiviivakoodi of The Federation of Finnish Financial Services ("Finnish bank transfer barcode"). Implementation has been done following [the specification](http://www.finanssiala.fi/maksujenvalitys/dokumentit/Pankkiviivakoodi-opas.pdf).
 
-TODO: Delete this and the text above, and describe your gem
+The library supports both current versions of Pankkiviivakoodi, version 4 (reference number in national form) and version 5 (reference number in international form, aka Creditor Reference based on ISO 11649).
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'virtuaaliviivakoodi'
+gem "virtuaaliviivakoodi"
 ```
 
 And then execute:
@@ -22,7 +22,14 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+Virtuaaliviivakoodi.generate({
+  iban: "FI37 1590 3000 0007 76",
+  reference: 11112,
+  amount: 12.25,
+  due_date: "161221"
+}) #=> "437159030000007760000122500000000000000000011112161221"
+```
 
 ## Development
 
@@ -32,5 +39,8 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/vesan/virtuaaliviivakoodi.
+Bug reports and pull requests are welcome on GitHub at https://github.com/kiskolabs/virtuaaliviivakoodi.
 
+## Thanks
+
+Akseli Nurmio for his JavaScript library [virtuaaliviivakoodi](https://github.com/akselinurmio/virtuaaliviivakoodi) from which this library has borrowed bunch of test cases.
