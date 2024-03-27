@@ -1,4 +1,5 @@
 require "spec_helper"
+require "date" # the Date class is part of the standard library, but it's not loaded by default in specs
 
 RSpec.describe Virtuaaliviivakoodi::DueDateNormalizer do
   it "works with valid string" do

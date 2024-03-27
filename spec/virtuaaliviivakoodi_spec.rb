@@ -23,6 +23,15 @@ RSpec.describe Virtuaaliviivakoodi do
     })).to eq("537159030000007760000011098000000000000000011112170101")
   end
 
+  it "works with keyword arguments" do
+    expect(Virtuaaliviivakoodi.generate(
+      iban: "FI37 1590 3000 0007 76",
+      reference: 11112,
+      amount: 12.25,
+      due_date: "161221"
+    )).to eq("437159030000007760000122500000000000000000011112161221")
+  end
+
   it "works without amount and due date" do
     expect(Virtuaaliviivakoodi.generate({
       iban: "FI37 1590 3000 0007 76",
@@ -43,7 +52,10 @@ RSpec.describe Virtuaaliviivakoodi do
         amount: 1.1,
         due_date: "170101"
       })
-    }.to raise_error(ArgumentError, "missing keyword: iban")
+    }.to raise_error { |error|
+      expect(error).to be_a(ArgumentError)
+      expect(error.message).to match(/missing keyword: :?iban/)
+    }
   end
 
   it "raises if no reference given" do
@@ -53,6 +65,9 @@ RSpec.describe Virtuaaliviivakoodi do
         amount: 1.1,
         due_date: "170101"
       })
-    }.to raise_error(ArgumentError, "missing keyword: reference")
+    }.to raise_error { |error|
+      expect(error).to be_a(ArgumentError)
+      expect(error.message).to match(/missing keyword: :?reference/)
+    }
   end
 end

@@ -3,7 +3,7 @@ require "virtuaaliviivakoodi/generator"
 
 module Virtuaaliviivakoodi
   # Takes parameters and returns virtuaaliviivakoodi as a String.
-  def self.generate(**arguments)
+  def self.generate(arguments = {})
     Generator.new(**arguments).call
   end
 
