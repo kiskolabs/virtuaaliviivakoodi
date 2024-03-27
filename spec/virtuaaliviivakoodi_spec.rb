@@ -43,7 +43,10 @@ RSpec.describe Virtuaaliviivakoodi do
         amount: 1.1,
         due_date: "170101"
       })
-    }.to raise_error(ArgumentError, "missing keyword: iban")
+    }.to raise_error { |error|
+      expect(error).to be_a(ArgumentError)
+      expect(error.message).to match(/missing keyword: :?iban/)
+    }
   end
 
   it "raises if no reference given" do
@@ -53,6 +56,9 @@ RSpec.describe Virtuaaliviivakoodi do
         amount: 1.1,
         due_date: "170101"
       })
-    }.to raise_error(ArgumentError, "missing keyword: reference")
+    }.to raise_error { |error|
+      expect(error).to be_a(ArgumentError)
+      expect(error.message).to match(/missing keyword: :?reference/)
+    }
   end
 end
