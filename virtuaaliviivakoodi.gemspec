@@ -6,7 +6,7 @@ require 'virtuaaliviivakoodi/version'
 Gem::Specification.new do |spec|
   spec.name          = "virtuaaliviivakoodi"
   spec.version       = Virtuaaliviivakoodi::VERSION
-  spec.authors       = ["Vesa Vänskä"]
+  spec.authors       = ["Vesa Vänskä", "Tiina Pennala"]
   spec.email         = ["vesa@vesavanska.com"]
 
   spec.summary       = %q{Creates virtuaaliviivakoodi}
